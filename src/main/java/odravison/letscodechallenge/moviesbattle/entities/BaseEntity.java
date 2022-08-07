@@ -7,10 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
+
 @MappedSuperclass
 @Getter
 @Setter
-public abstract class BaseEntity<T extends Serializable> {
+public abstract class BaseEntity<IdType extends Serializable> {
 
     public static final String WHERE_DELETED_CLAUSE = "deleted = false";
 

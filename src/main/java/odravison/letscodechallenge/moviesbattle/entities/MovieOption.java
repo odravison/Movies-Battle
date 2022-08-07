@@ -30,18 +30,11 @@ public class MovieOption extends BaseEntity<Long> {
     @Column(nullable = false, updatable = false)
     private String movieId;
 
-//    @Column(name = "match_quiz_id")
-//    private Long matchQuizId;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "match_quiz_id", referencedColumnName = "id", nullable = false, updatable = false)
     private MatchQuiz matchQuiz;
 
     @Column(scale = 1)
     private BigDecimal scorePoints;
-
-    public void anyFunc() {
-
-    }
 
 }

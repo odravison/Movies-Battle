@@ -28,9 +28,6 @@ public class Match extends BaseEntity<Long> {
 
     public static final String DELETE_ME = "UPDATE match SET deleted = true WHERE id = ?";
 
-//    @Column(name = "match_quiz_id")
-//    private Long matchQuizId;
-
     @OneToMany(fetch = FetchType.EAGER)
     private List<MatchQuiz> matchQuizzes;
 }
