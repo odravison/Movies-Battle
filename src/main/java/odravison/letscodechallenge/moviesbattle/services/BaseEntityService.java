@@ -29,13 +29,13 @@ public abstract class BaseEntityService<Entity extends BaseEntity<IdType>, IdTyp
     }
 
     @Transactional
-    public Entity insert(Entity domain) {
-        return getRepository().save(domain);
+    public Entity insert(Entity entity) {
+        return getRepository().save(entity);
     }
 
     @Transactional
-    public void update(IdType id, Entity domain) {
-        getRepository().save(domain);
+    public void update(IdType id, Entity entity) {
+        getRepository().save(entity);
     }
 
     @Transactional

@@ -18,6 +18,7 @@ public class SecurityUtils {
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, PATCH");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with, authorization, content-type, refresh-token, user");
         response.setHeader("Access-Control-Expose-Headers", "authorization, content-type, refresh-token, user");
+        response.setHeader("Content-Type", "application/json");
 
         return response;
     }
