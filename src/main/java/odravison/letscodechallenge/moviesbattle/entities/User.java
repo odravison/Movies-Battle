@@ -35,4 +35,7 @@ public class User extends BaseEntity<Long> {
 
     @Column
     private String password;
+
+    @Column(name = "last_login_time")
+    protected Long lastLoginTime;
 }

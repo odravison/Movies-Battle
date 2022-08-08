@@ -1,3 +1,11 @@
+app:
+  # TOKEN EXPIRATION
+  token:
+    secretkey: L3tzc0d3f0rc3
+    expiration: 86400000 # One day (24 hours) in milliseconds
+  refreshtoken:
+    expiration: 172800000 # Two days (48 hours) in milliseconds
+
 server:
   port: 8000
 
@@ -6,7 +14,8 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
-
   h2:
     console:
       enabled: true
+  jooq:
+    sql-dialect: org.hibernate.dialect.H2Dialect
