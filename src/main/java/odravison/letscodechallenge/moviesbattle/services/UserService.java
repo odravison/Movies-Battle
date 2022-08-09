@@ -2,9 +2,11 @@ package odravison.letscodechallenge.moviesbattle.services;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import odravison.letscodechallenge.moviesbattle.config.dto.LoggedUserDTO;
 import odravison.letscodechallenge.moviesbattle.dto.UserResponse;
 import odravison.letscodechallenge.moviesbattle.entities.User;
 import odravison.letscodechallenge.moviesbattle.repositories.UserRepository;
+import odravison.letscodechallenge.moviesbattle.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,5 +37,14 @@ public class UserService extends BaseEntityService<User, Long> {
     public UserResponse findByLogin(String login) {
         User userFound = this.repository.findByLogin(login);
         return new UserResponse(userFound);
+    }
+
+    public LoggedUserDTO getLoggedUser() {
+        return SecurityUtils.getCurrentUser();
+    }
+
+    public boolean isUserLoggedIn() {
+        LoggedUserDTO loggedUser = getLoggedUser();
+        return loggedUser != null;
     }
 }

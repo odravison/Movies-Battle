@@ -21,7 +21,7 @@ public class JWTAuthenticationManager implements AuthenticationManager {
         UserResponse loggedUser = this.getUserService().login(auth.getName(), CryptoUtil.hash((String) auth.getCredentials()));
 
         if (loggedUser != null) {
-            return new UsernamePasswordAuthenticationToken(toUserDTO(loggedUser), auth.getCredentials());
+            return new UsernamePasswordAuthenticationToken(toLoggedUserDTO(loggedUser), auth.getCredentials());
         }
 
         throw new BadCredentialsException("Invalid username and/or password.");
@@ -46,7 +46,7 @@ public class JWTAuthenticationManager implements AuthenticationManager {
      *            Logged User.
      * @return DTO.
      */
-    private LoggedUserDTO toUserDTO(UserResponse user) {
+    public static LoggedUserDTO toLoggedUserDTO(UserResponse user) {
 
         LoggedUserDTO userDTO = new LoggedUserDTO();
 

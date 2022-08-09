@@ -13,12 +13,11 @@ import static odravison.letscodechallenge.moviesbattle.entities.Match.DELETE_ME;
 @Entity(name = "match")
 @Getter
 @Setter
-@Builder(setterPrefix = "with")
-@AllArgsConstructor
 @NoArgsConstructor
 @SQLDelete(sql = DELETE_ME)
 @Where(clause = BaseEntity.WHERE_DELETED_CLAUSE)
 public class Match extends BaseEntity<Long> {
+    public static final String DELETE_ME = "UPDATE match SET deleted = true WHERE id = ?";
 
     @Id
     @Setter(AccessLevel.NONE)
@@ -26,8 +25,22 @@ public class Match extends BaseEntity<Long> {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
-    public static final String DELETE_ME = "UPDATE match SET deleted = true WHERE id = ?";
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<MatchQuiz> matchQuizzes;
+
+    @Column(name = "user_id")
+    private Long userId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id",
+            nullable = false, updatable = false, insertable = false)
+    private User user;
+
+    @Column(name = "match_ended")
+    private Boolean matchEnded = Boolean.FALSE;
+
+    public Match(Long userId) {
+        this.userId = userId;
+    }
 }

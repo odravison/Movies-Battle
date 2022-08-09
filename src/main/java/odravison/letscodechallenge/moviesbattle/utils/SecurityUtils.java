@@ -1,5 +1,9 @@
 package odravison.letscodechallenge.moviesbattle.utils;
 
+import odravison.letscodechallenge.moviesbattle.config.dto.LoggedUserDTO;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import javax.servlet.http.HttpServletResponse;
 
 public class SecurityUtils {
@@ -21,6 +25,11 @@ public class SecurityUtils {
         response.setHeader("Content-Type", "application/json");
 
         return response;
+    }
+
+    public static LoggedUserDTO getCurrentUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth != null ? (LoggedUserDTO) auth.getPrincipal() : null;
     }
 
 }

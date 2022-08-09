@@ -5,6 +5,7 @@ app:
     expiration: 86400000 # One day (24 hours) in milliseconds
   refreshtoken:
     expiration: 172800000 # Two days (48 hours) in milliseconds
+  OMDB-api-key: 45b93b76
 
 server:
   port: 8000

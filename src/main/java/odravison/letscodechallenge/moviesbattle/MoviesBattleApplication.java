@@ -18,7 +18,7 @@ public class MoviesBattleApplication {
 
     }
 
-    private static void createDefaultUsers() {
+    public static void createDefaultUsers() {
         UserService userService = AppContext.getBean(UserService.class);
         userService.insert(new User(null, "Odravison", "odra", CryptoUtil.hash("odra"), null));
         userService.insert(new User(null, "Maria Luisa", "malu", CryptoUtil.hash("malu"), null));
